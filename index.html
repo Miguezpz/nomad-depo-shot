@@ -1,31 +1,31 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <title>Depo Shot Scheduler</title>
-    <!-- Enlace al archivo CSS -->
+    <!-- Link to CSS file -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <div class="container">
-    <!-- Nuevo encabezado con el logo -->
+    <!-- Header with logo -->
     <div class="header-title">
-        <img src="assets/favicon.png" alt="Logo Depo Shot" class="logo">
-        <h2>Calculadora de Citas: Depo Shot</h2>
+        <img src="assets/favicon.png" alt="Depo Shot Logo" class="logo">
+        <h2>Depo Shot Scheduler</h2>
     </div>
     
-    <label for="lastShotDate">Fecha de la última inyección:</label>
-    <input type="date" id="lastShotDate" placeholder="Selecciona la fecha">
-    <button id="calculateBtn">Calcular Próxima Cita</button>
+    <label for="lastShotDate">Date of last injection:</label>
+    <input type="date" id="lastShotDate">
+    <button id="calculateBtn">Calculate Next Appointment</button>
 
-    <!-- Se agregó aria-live para accesibilidad -->
+    <!-- Added aria-live for accessibility -->
     <div id="resultContainer" class="result-box" aria-live="polite"></div>
 </div>
 
-<!-- Enlace al archivo JavaScript -->
+<!-- Link to JavaScript file -->
 <script src="script.js"></script>
 
 </body>

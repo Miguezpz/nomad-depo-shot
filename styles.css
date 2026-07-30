@@ -7,18 +7,18 @@
     --primary-hover: #2980b9;
     --border-color: #ccc;
     
-    /* Colores de éxito */
+    /* Success colors */
     --success-bg: #d4edda;
     --success-border: #c3e6cb;
     --success-text: #155724;
     
-    /* Colores de error */
+    /* Error colors */
     --error-bg: #f8d7da;
     --error-border: #f5c6cb;
     --error-text: #721c24;
 }
 
-/* El box-sizing universal previene que los bordes y paddings rompan el diseño responsivo */
+/* Universal box-sizing prevents borders/padding from breaking responsive design */
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -31,7 +31,7 @@ body {
     padding: 15px;
     display: flex;
     justify-content: center;
-    align-items: center; /* Centra el contenido verticalmente si hay espacio */
+    align-items: center; /* Centers content vertically if space allows */
     min-height: 100vh;
 }
 
@@ -39,12 +39,12 @@ body {
     background-color: var(--bg-card);
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra un poco más suave y amplia */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     max-width: 500px;
     width: 100%;
 }
 
-/* --- ESTILOS PARA EL LOGO Y TÍTULO --- */
+/* --- LOGO & TITLE STYLES --- */
 .header-title {
     display: flex;
     align-items: center;
@@ -54,9 +54,9 @@ body {
 }
 
 .logo {
-    width: 80px; /* Se hizo el logo mucho más grande */
+    width: 80px;
     height: auto;
-    flex-shrink: 0; /* Evita que el logo se aplaste si el texto es muy largo */
+    flex-shrink: 0; /* Prevents logo from shrinking if text is too long */
 }
 
 h2 {
@@ -83,7 +83,7 @@ input[type="date"] {
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-/* Estado Focus para accesibilidad */
+/* Focus state for accessibility */
 input[type="date"]:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
@@ -107,7 +107,7 @@ button:hover {
     background-color: var(--primary-hover);
 }
 
-/* Estado Focus para accesibilidad */
+/* Focus state for accessibility */
 button:focus-visible {
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
 }
@@ -146,29 +146,29 @@ li {
 }
 
 /* ========================================= */
-/*       DISEÑO RESPONSIVO (MÓVILES)         */
+/*       RESPONSIVE DESIGN (MOBILE)          */
 /* ========================================= */
 @media (max-width: 480px) {
     .container {
-        padding: 25px 20px; /* Reduce un poco el padding lateral en celulares */
+        padding: 25px 20px;
     }
 
     .header-title {
-        flex-direction: column; /* Apila el logo sobre el título */
+        flex-direction: column; /* Stacks logo over title */
         text-align: center;
         gap: 10px;
     }
 
     .logo {
-        width: 70px; /* Ajusta ligeramente el logo para pantallas pequeñas */
+        width: 70px;
     }
 
     h2 {
-        font-size: 20px; /* Reduce un poco el título para que no ocupe tanto espacio */
+        font-size: 20px;
     }
 
     button {
-        padding: 15px; /* Hace el botón más alto para que sea más fácil de tocar con el dedo */
+        padding: 15px; /* Taller button for easier touch */
         font-size: 18px;
     }
 }

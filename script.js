@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const buttonElement = document.getElementById('calculateBtn');
     const resultContainer = document.getElementById('resultContainer');
 
-    // Restringir el input de fecha para que no permita fechas en el futuro
+    // Restrict date input to prevent future dates
     const todayISO = new Date().toISOString().split('T')[0];
     inputElement.setAttribute('max', todayISO);
 
-    // Permite presionar "Enter" en lugar de hacer clic en el botón
+    // Allow pressing "Enter" instead of clicking the button
     inputElement.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
             calculateDepoDates();
@@ -19,64 +19,64 @@ document.addEventListener('DOMContentLoaded', () => {
     function calculateDepoDates() {
         const dateValue = inputElement.value;
         
-        // Si el usuario vacía el input y presiona Enter/Calcular, se oculta el resultado anterior
+        // If user clears the input and presses Enter/Calculate, hide previous result
         if (!dateValue) {
             resultContainer.style.display = 'none';
-            alert("Por favor, selecciona la fecha de la última inyección.");
+            alert("Please select the date of the last injection.");
             return;
         }
 
-        // Se usa "T00:00:00" para evitar desajustes de zona horaria
+        // Use "T00:00:00" to avoid timezone offset issues
         const lastShotDate = new Date(dateValue + 'T00:00:00');
         
-        // Cálculos según el calendario de Depo-Provera (flexibilidad entre las semanas 11 y 13)
-        const minDays = 77; // 11 semanas en días
-        const maxDays = 91; // 13 semanas en días
+        // Calculations based on Depo-Provera calendar (11 to 13 weeks flexibility)
+        const minDays = 77; // 11 weeks in days
+        const maxDays = 91; // 13 weeks in days
         
         const minDate = new Date(lastShotDate.getTime() + (minDays * 24 * 60 * 60 * 1000));
         const maxDate = new Date(lastShotDate.getTime() + (maxDays * 24 * 60 * 60 * 1000));
         
-        // Fecha actual truncada a medianoche para comparación justa
+        // Current date truncated to midnight for fair comparison
         const today = new Date();
         today.setHours(0, 0, 0, 0);
 
-        // Formato de fechas (Ejemplo: Mar 19, 2026)
+        // Date format (Example: Mar 19, 2026 - US Format: Month Day, Year)
         const options = { month: 'short', day: 'numeric', year: 'numeric' };
         const minDateStr = minDate.toLocaleDateString('en-US', options);
         const maxDateStr = maxDate.toLocaleDateString('en-US', options);
 
         resultContainer.style.display = 'block';
 
-        // Lógica de agendamiento
+        // Scheduling logic
         if (today > maxDate) {
-            // Pasó el Window Time
+            // Window Time Expired
             resultContainer.className = 'result-box error';
             resultContainer.innerHTML = `
-                <h3>⚠️ Ventana de Tiempo Expirada</h3>
-                <p>El paciente perdió su ventana de inyección (la fecha límite era el <strong>${maxDateStr}</strong>).</p>
-                <p><strong>💡 El tratamiento debe ser reiniciado.</strong></p>
+                <h3>⚠️ Time Window Expired</h3>
+                <p>The patient missed their injection window (deadline was <strong>${maxDateStr}</strong>).</p>
+                <p><strong>💡 Treatment must be restarted.</strong></p>
                 <hr>
-                <p><strong>Instrucciones para el Agente:</strong></p>
+                <p><strong>Instructions for Agent:</strong></p>
                 <ul>
-                    <li><strong>Agendar con:</strong> PCP (Primary Care Provider).</li>
-                    <li><strong>Tipo de Cita:</strong> OV/FU 15 minutes.</li>
-                    <li><strong>Razón:</strong> Initial Depo Follow-Up</li>
+                    <li><strong>Schedule with:</strong> PCP (Primary Care Provider).</li>
+                    <li><strong>Appointment Type:</strong> OV/FU 15 minutes.</li>
+                    <li><strong>Reason:</strong> Initial Depo Follow-Up</li>
                 </ul>
             `;
         } else {
-            // Está a tiempo (o en el futuro)
+            // On time (or future valid window)
             resultContainer.className = 'result-box success';
             resultContainer.innerHTML = `
-                <h3>✅ Ventana de Próxima Inyección</h3>
-                <p>La próxima inyección debe agendarse entre:</p>
-                <p><strong>${minDateStr}</strong> y <strong>${maxDateStr}</strong></p>
+                <h3>✅ Next Injection Window</h3>
+                <p>The next injection must be scheduled between:</p>
+                <p><strong>${minDateStr}</strong> and <strong>${maxDateStr}</strong></p>
                 <hr>
-                <p><strong>Instrucciones para el Agente (Depo Follow-Up):</strong></p>
+                <p><strong>Instructions for Agent (Depo Follow-Up):</strong></p>
                 <ul>
-                    <li><strong>Tipo de Cita:</strong> 30M-FP (Family Planning Education).</li>
-                    <li><strong>Razón:</strong> Depo Follow-Up.</li>
-                    <li><strong>Agendar con:</strong> PCP o Dalila. <strong>(Karen NO hace seguimientos de Depo).</strong></li>
-                    <li><strong>Nota Interna:</strong> Dalila convertirá esta cita a una de 15M-FP.</li>
+                    <li><strong>Appointment Type:</strong> 30M-FP (Family Planning Education).</li>
+                    <li><strong>Reason:</strong> Depo Follow-Up.</li>
+                    <li><strong>Schedule with:</strong> PCP or Dalila. <strong>(Karen DOES NOT perform Depo follow-ups).</strong></li>
+                    <li><strong>Internal Note:</strong> Dalila will convert this appointment into a 15M-FP.</li>
                 </ul>
             `;
         }
