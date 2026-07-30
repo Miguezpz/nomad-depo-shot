@@ -18,29 +18,53 @@
     --error-text: #721c24;
 }
 
+/* El box-sizing universal previene que los bordes y paddings rompan el diseño responsivo */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: var(--bg-body);
     color: var(--text-main);
     margin: 0;
-    padding: 20px;
+    padding: 15px;
     display: flex;
     justify-content: center;
+    align-items: center; /* Centra el contenido verticalmente si hay espacio */
+    min-height: 100vh;
 }
 
 .container {
     background-color: var(--bg-card);
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra un poco más suave y amplia */
     max-width: 500px;
     width: 100%;
 }
 
-h2 {
-    margin-top: 0;
-    color: var(--text-heading);
+/* --- ESTILOS PARA EL LOGO Y TÍTULO --- */
+.header-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; 
+    margin-bottom: 25px;
 }
+
+.logo {
+    width: 80px; /* Se hizo el logo mucho más grande */
+    height: auto;
+    flex-shrink: 0; /* Evita que el logo se aplaste si el texto es muy largo */
+}
+
+h2 {
+    margin: 0;
+    color: var(--text-heading);
+    font-size: 24px;
+}
+/* ------------------------------------------ */
 
 label {
     font-weight: bold;
@@ -50,11 +74,10 @@ label {
 
 input[type="date"] {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 20px;
     border: 1px solid var(--border-color);
     border-radius: 5px;
-    box-sizing: border-box;
     font-size: 16px;
     outline: none;
     transition: border-color 0.3s, box-shadow 0.3s;
@@ -74,6 +97,7 @@ button {
     border: none;
     border-radius: 5px;
     font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.1s;
     outline: none;
@@ -97,6 +121,7 @@ button:active {
     padding: 20px;
     border-radius: 5px;
     display: none;
+    line-height: 1.5;
 }
 
 .success {
@@ -113,8 +138,37 @@ button:active {
 
 ul {
     padding-left: 20px;
+    margin-bottom: 0;
 }
 
 li {
     margin-bottom: 8px;
+}
+
+/* ========================================= */
+/*       DISEÑO RESPONSIVO (MÓVILES)         */
+/* ========================================= */
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 20px; /* Reduce un poco el padding lateral en celulares */
+    }
+
+    .header-title {
+        flex-direction: column; /* Apila el logo sobre el título */
+        text-align: center;
+        gap: 10px;
+    }
+
+    .logo {
+        width: 70px; /* Ajusta ligeramente el logo para pantallas pequeñas */
+    }
+
+    h2 {
+        font-size: 20px; /* Reduce un poco el título para que no ocupe tanto espacio */
+    }
+
+    button {
+        padding: 15px; /* Hace el botón más alto para que sea más fácil de tocar con el dedo */
+        font-size: 18px;
+    }
 }
