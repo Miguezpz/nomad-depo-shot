@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <title>Depo Shot Scheduler</title>
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Calculadora de Citas: Depo Shot</h2>
+    <label for="lastShotDate">Fecha de la última inyección:</label>
+    <input type="date" id="lastShotDate" placeholder="Selecciona la fecha">
+    <button id="calculateBtn">Calcular Próxima Cita</button>
+
+    <!-- Se agregó aria-live para accesibilidad -->
+    <div id="resultContainer" class="result-box" aria-live="polite"></div>
+</div>
+
+<!-- Enlace al archivo JavaScript -->
+<script src="script.js"></script>
+
+</body>
+</html>

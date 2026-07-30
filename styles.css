@@ -1,0 +1,120 @@
+:root {
+    --bg-body: #f4f7f6;
+    --bg-card: #fff;
+    --text-main: #333;
+    --text-heading: #2c3e50;
+    --primary-color: #3498db;
+    --primary-hover: #2980b9;
+    --border-color: #ccc;
+    
+    /* Colores de éxito */
+    --success-bg: #d4edda;
+    --success-border: #c3e6cb;
+    --success-text: #155724;
+    
+    /* Colores de error */
+    --error-bg: #f8d7da;
+    --error-border: #f5c6cb;
+    --error-text: #721c24;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    background-color: var(--bg-card);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+h2 {
+    margin-top: 0;
+    color: var(--text-heading);
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Estado Focus para accesibilidad */
+input[type="date"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: var(--bg-card);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    outline: none;
+}
+
+button:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Estado Focus para accesibilidad */
+button:focus-visible {
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.result-box {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    display: none;
+}
+
+.success {
+    background-color: var(--success-bg);
+    border: 1px solid var(--success-border);
+    color: var(--success-text);
+}
+
+.error {
+    background-color: var(--error-bg);
+    border: 1px solid var(--error-border);
+    color: var(--error-text);
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+}
