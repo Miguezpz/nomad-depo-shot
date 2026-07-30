@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>The patient missed their injection window (deadline was <strong>${maxDateStr}</strong>).</p>
                 <p><strong>💡 Treatment must be restarted.</strong></p>
                 <hr>
-                <p><strong>Instructions for Agent:</strong></p>
+                <p><strong>Instructions:</strong></p>
                 <ul>
                     <li><strong>Schedule with:</strong> PCP (Primary Care Provider).</li>
                     <li><strong>Appointment Type:</strong> OV/FU 15 minutes.</li>
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>The next injection must be scheduled between:</p>
                 <p><strong>${minDateStr}</strong> and <strong>${maxDateStr}</strong></p>
                 <hr>
-                <p><strong>Instructions for Agent (Depo Follow-Up):</strong></p>
+                <p><strong>Instructions (Depo Follow-Up):</strong></p>
                 <ul>
                     <li><strong>Appointment Type:</strong> 30M-FP (Family Planning Education).</li>
                     <li><strong>Reason:</strong> Depo Follow-Up.</li>
