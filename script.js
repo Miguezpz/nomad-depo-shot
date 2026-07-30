@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <ul>
                     <li><strong>Schedule with:</strong> PCP (Primary Care Provider).</li>
                     <li><strong>Appointment Type:</strong> OV/FU 15 minutes.</li>
-                    <li><strong>Reason:</strong> Initial Depo Follow-Up</li>
+                    <li><strong>Reason:</strong> Initial Depo Shot</li>
                 </ul>
             `;
         } else {
