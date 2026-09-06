@@ -1,174 +1,235 @@
+/* ==========================================================================
+   Variables Globales & Reset
+   ========================================================================== */
 :root {
-    --bg-body: #f4f7f6;
-    --bg-card: #fff;
-    --text-main: #333;
-    --text-heading: #2c3e50;
-    --primary-color: #3498db;
-    --primary-hover: #2980b9;
-    --border-color: #ccc;
-    
-    /* Success colors */
-    --success-bg: #d4edda;
-    --success-border: #c3e6cb;
-    --success-text: #155724;
-    
-    /* Error colors */
-    --error-bg: #f8d7da;
-    --error-border: #f5c6cb;
-    --error-text: #721c24;
+  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --item-bg: #020617;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Colores de Estado Modernizados */
+  --success-bg: rgba(16, 185, 129, 0.1);
+  --success-border: rgba(16, 185, 129, 0.3);
+  --success-text: #34d399;
+
+  --error-bg: rgba(239, 68, 68, 0.1);
+  --error-border: rgba(239, 68, 68, 0.3);
+  --error-text: #f87171;
 }
 
-/* Universal box-sizing prevents borders/padding from breaking responsive design */
 *, *::before, *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: var(--bg-body);
-    color: var(--text-main);
-    margin: 0;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Centers content vertically if space allows */
-    min-height: 100vh;
+  font-family: var(--font-sans);
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
 }
 
-.container {
-    background-color: var(--bg-card);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    max-width: 500px;
-    width: 100%;
+/* ==========================================================================
+   Estructura Principal (Card Glassmorphism)
+   ========================================================================== */
+.app-card {
+  width: 100%;
+  max-width: 550px;
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
 }
 
-/* --- LOGO & TITLE STYLES --- */
+.app-header {
+  text-align: center;
+}
+
 .header-title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px; 
-    margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
 }
 
 .logo {
-    width: 80px;
-    height: auto;
-    flex-shrink: 0; /* Prevents logo from shrinking if text is too long */
+  width: 42px;
+  height: auto;
+  border-radius: 12px;
 }
 
-h2 {
-    margin: 0;
-    color: var(--text-heading);
-    font-size: 24px;
+.app-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
 }
-/* ------------------------------------------ */
+
+.app-header p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   Controles e Inputs
+   ========================================================================== */
+.action-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
 
 label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
 }
 
 input[type="date"] {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    font-size: 16px;
-    outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background: var(--item-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  color-scheme: dark; /* Para que el selector nativo de fechas se vuelva oscuro */
 }
 
-/* Focus state for accessibility */
 input[type="date"]:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
 }
 
-button {
-    width: 100%;
-    padding: 12px;
-    background-color: var(--primary-color);
-    color: var(--bg-card);
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
-    outline: none;
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.39);
 }
 
-button:hover {
-    background-color: var(--primary-hover);
+.btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgba(99, 102, 241, 0.5);
 }
 
-/* Focus state for accessibility */
-button:focus-visible {
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+.btn:active {
+  transform: translateY(0);
 }
 
-button:active {
-    transform: scale(0.98);
-}
-
+/* ==========================================================================
+   Sección de Resultados
+   ========================================================================== */
 .result-box {
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 5px;
-    display: none;
-    line-height: 1.5;
+  display: none;
+  background: var(--item-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-.success {
-    background-color: var(--success-bg);
-    border: 1px solid var(--success-border);
-    color: var(--success-text);
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.error {
-    background-color: var(--error-bg);
-    border: 1px solid var(--error-border);
-    color: var(--error-text);
+.result-box h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-ul {
-    padding-left: 20px;
-    margin-bottom: 0;
+.result-box p {
+  margin-bottom: 0.5rem;
 }
 
-li {
-    margin-bottom: 8px;
+.result-box hr {
+  border: none;
+  border-top: 1px solid var(--card-border);
+  margin: 1rem 0;
 }
 
-/* ========================================= */
-/*       RESPONSIVE DESIGN (MOBILE)          */
-/* ========================================= */
+.result-box ul {
+  padding-left: 1.25rem;
+}
+
+.result-box li {
+  margin-bottom: 0.4rem;
+  color: var(--text-muted);
+}
+
+.result-box li strong {
+  color: var(--text-main);
+}
+
+/* Estilos de Estado */
+.result-box.success {
+  border-color: var(--success-border);
+  background: linear-gradient(180deg, var(--success-bg) 0%, var(--item-bg) 100%);
+}
+
+.result-box.success h3 {
+  color: var(--success-text);
+}
+
+.result-box.error {
+  border-color: var(--error-border);
+  background: linear-gradient(180deg, var(--error-bg) 0%, var(--item-bg) 100%);
+}
+
+.result-box.error h3 {
+  color: var(--error-text);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
 @media (max-width: 480px) {
-    .container {
-        padding: 25px 20px;
-    }
+  .app-card {
+    padding: 1.5rem;
+  }
 
-    .header-title {
-        flex-direction: column; /* Stacks logo over title */
-        text-align: center;
-        gap: 10px;
-    }
-
-    .logo {
-        width: 70px;
-    }
-
-    h2 {
-        font-size: 20px;
-    }
-
-    button {
-        padding: 15px; /* Taller button for easier touch */
-        font-size: 18px;
-    }
+  .header-title {
+    flex-direction: column;
+  }
 }

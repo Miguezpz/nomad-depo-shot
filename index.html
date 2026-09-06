@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <title>Depo Shot Scheduler</title>
-    <!-- Link to CSS file -->
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <title>Depo Shot Scheduler</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<div class="container">
-    <!-- Header with logo -->
-    <div class="header-title">
+  <main class="app-card">
+    <header class="app-header">
+      <div class="header-title">
         <img src="assets/favicon.png" alt="Depo Shot Logo" class="logo">
-        <h2>Depo Shot Scheduler</h2>
-    </div>
-    
-    <label for="lastShotDate">Date of last injection:</label>
-    <input type="date" id="lastShotDate">
-    <button id="calculateBtn">Calculate Next Appointment</button>
+        <h1>Depo Shot Scheduler</h1>
+      </div>
+      <p>Calculate next appointment windows and follow-up guidelines</p>
+    </header>
 
-    <!-- Added aria-live for accessibility -->
+    <section class="action-section">
+      <div class="input-group">
+        <label for="lastShotDate">Date of last injection:</label>
+        <input type="date" id="lastShotDate">
+      </div>
+      <button id="calculateBtn" class="btn btn-primary">
+        <span class="btn-text">Calculate Next Appointment</span>
+      </button>
+    </section>
+
+    <!-- Display result container -->
     <div id="resultContainer" class="result-box" aria-live="polite"></div>
-</div>
+  </main>
 
-<!-- Link to JavaScript file -->
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
