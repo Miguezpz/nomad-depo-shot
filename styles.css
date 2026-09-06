@@ -118,7 +118,7 @@ input[type="date"] {
   border-radius: 12px;
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  color-scheme: dark; /* Para que el selector nativo de fechas se vuelva oscuro */
+  color-scheme: dark;
 }
 
 input[type="date"]:focus {
@@ -189,17 +189,40 @@ input[type="date"]:focus {
   margin: 1rem 0;
 }
 
-.result-box ul {
-  padding-left: 1.25rem;
+.instructions-list {
+  list-style: none;
+  padding-left: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
 }
 
-.result-box li {
-  margin-bottom: 0.4rem;
+.instructions-list li {
   color: var(--text-muted);
 }
 
-.result-box li strong {
+.instructions-list li strong {
   color: var(--text-main);
+}
+
+.appt-img-wrapper {
+  margin-top: 0.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  background: var(--item-bg);
+}
+
+.appt-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.appt-img:hover {
+  transform: scale(1.02);
 }
 
 /* Estilos de Estado */
@@ -232,4 +255,26 @@ input[type="date"]:focus {
   .header-title {
     flex-direction: column;
   }
+}
+
+/* ==========================================================================
+   Badges para Tipos de Cita
+   ========================================================================== */
+.badge-appt {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 0.25rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.badge-pcp {
+  background-color: #33CC33;
+}
+
+.badge-dalila {
+  background-color: #FF009A;
 }

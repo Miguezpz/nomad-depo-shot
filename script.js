@@ -57,9 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p><strong>💡 Treatment must be restarted.</strong></p>
                 <hr>
                 <p><strong>Instructions:</strong></p>
-                <ul>
+                <ul class="instructions-list">
                     <li><strong>Schedule with:</strong> PCP (Primary Care Provider).</li>
-                    <li><strong>Appointment Type:</strong> OV/FU 15 minutes.</li>
+                    <li><strong>Appointment Type:</strong> <span class="badge-appt badge-pcp">15M-OV/FU (Office/FU visit)</span></li>
                     <li><strong>Reason:</strong> Initial Depo Shot</li>
                 </ul>
             `;
@@ -72,10 +72,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p><strong>${minDateStr}</strong> and <strong>${maxDateStr}</strong></p>
                 <hr>
                 <p><strong>Instructions (Depo Follow-Up):</strong></p>
-                <ul>
-                    <li><strong>Appointment Type:</strong> 30M-FP (Family Planning Education).</li>
+                <ul class="instructions-list">
                     <li><strong>Reason:</strong> Depo Follow-Up.</li>
-                    <li><strong>Schedule with:</strong> PCP or Dalila. <strong>(Karen DOES NOT perform Depo follow-ups).</strong></li>
+                    <li>
+                        <strong>Schedule with PCP:</strong> <span class="badge-appt badge-pcp">15M-OV/FU (Office/FU visit)</span>
+                        <div class="appt-img-wrapper">
+                            <img src="assets/ov-appt.png" alt="PCP Appointment Example" class="appt-img">
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Schedule with Dalila:</strong> <span class="badge-appt badge-dalila">30M-FP (Family Planning Education)</span>
+                        <br><small><em>(Karen DOES NOT perform Depo follow-ups)</em></small>
+                        <div class="appt-img-wrapper">
+                            <img src="assets/dalila-appt.png" alt="Dalila Appointment Example" class="appt-img">
+                        </div>
+                    </li>
                     <li><strong>Internal Note:</strong> Dalila will convert this appointment into a 15M-FP.</li>
                 </ul>
             `;
